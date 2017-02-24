@@ -1,18 +1,15 @@
 'use strict';
 
-module.exports = ['$log', 'searchService', SearchController];
+module.exports = ['$log', '$scope', 'searchService', SearchController];
 
-function SearchController($log, searchService) {
-  $log.debug('SearchController');
+function SearchController($log, $scope, searchService) {
 
-  this.people = [];
+  this.searchResults = [];
 
-  this.getPeople = function() {
-    searchService.getPeople()
+  $scope.$watch('searchTerm', function() {
+    searchService.getPeople($scope.searchTerm)
     .then( people => {
-      this.people = people;
+      $scope.searchResults = people;
     });
-  };
-
-  this.getPeople();
+  });
 }

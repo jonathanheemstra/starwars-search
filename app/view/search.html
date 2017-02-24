@@ -1,6 +1,14 @@
 <section>
   <h1>SEARCH</h1>
-  <!-- Search Input Component -->
+  <form action="" method="">
+    <input type="text" placeholder="Search by character name" ng-model="searchTerm" ng-model-options="{ debounce: 800 }">
+    <button type="submit" name="button">Search</button>
+  </form>
+
+  <div ng-repeat="results in searchResults.results">
+    {{ searchResults.results }}
+  </div>
+
   <!-- Search Filter and Total Component -->
   <!-- Search Results Component -->
 </section>

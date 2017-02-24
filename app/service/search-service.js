@@ -8,10 +8,10 @@ function searchService($q, $log, $http) {
   let service = {};
   service.people = [];
 
-  service.getPeople = function() {
+  service.getPeople = function(search) {
     $log.debug('searchService.getPeople()');
 
-    let url = 'http://swapi.co/api/people/';
+    let url = `http://swapi.co/api/people/?search=${search}`;
     let config = {
       headers: {
         Accept: 'application/json',

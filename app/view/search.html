@@ -72,7 +72,7 @@
     </div>
     <ul class="results-list">
       <search-results
-        ng-repeat="results in searchResults.results | filter:selected:strict"
+        ng-repeat="results in searchResults.results | genderSearch:selected:true"
         results="results"
         ng-if="searchTerm !== ''"></search-results>
     </ul>

@@ -74,7 +74,11 @@
 
       .dropdown-menu {
         right: 0;
-        width: 156px;
+        width: 170px;
+      }
+
+      img {
+        float: right;
       }
 
       div:first-of-type {
@@ -93,7 +97,7 @@
       }
 
       button {
-        width: 156px;
+        width: 170px;
         height: 35px;
       	border-radius: 3px;
       	background-color: #ffffff;

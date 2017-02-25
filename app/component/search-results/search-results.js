@@ -5,7 +5,8 @@ module.exports = {
   controller: [SearchResultsController],
   controllerAs: 'searchResultsCtrl',
   bindings: {
-    results: '<'
+    results: '<',
+    search: '<'
   }
 };
 

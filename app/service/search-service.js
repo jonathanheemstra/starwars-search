@@ -6,7 +6,6 @@ function searchService($q, $log, $http) {
   $log.debug('searchService');
 
   let service = {};
-  service.people = [];
 
   service.getPeople = function(search) {
     $log.debug('searchService.getPeople()');
@@ -21,8 +20,7 @@ function searchService($q, $log, $http) {
 
     return $http.get(url, config)
     .then( res => {
-      service.people = res.data;
-      return service.people;
+      return res.data;
     })
     .catch( err => {
       return $q.reject(err);

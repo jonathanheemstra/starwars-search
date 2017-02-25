@@ -1,14 +1,80 @@
-<section>
-  <h1>SEARCH</h1>
-  <form action="" method="">
-    <input type="text" placeholder="Search by character name" ng-model="searchTerm" ng-model-options="{ debounce: 800 }">
-    <button type="submit" name="button">Search</button>
+<section class="search-results">
+
+  <!-- Search Box Component -->
+  <form ng-submit="$scope.runSearch()">
+    <input
+      type="text"
+      placeholder="Search by character name"
+      ng-model="searchTerm"
+      ng-model-options="{ debounce: 500 }">
+    <button
+      type="submit"
+      name="button">
+      Search
+    </button>
   </form>
 
-  <div ng-repeat="results in searchResults.results">
-    {{ searchResults.results }}
-  </div>
-
   <!-- Search Filter and Total Component -->
+  <section class="filter">
+    <div class="results">
+      {{ searchResults.count }} RESULT
+    </div>
+    <div
+      class="btn-group"
+      uib-dropdown
+      is-open="status.isopen"
+      ng-init="$parent.selected = null">
+      <div>GENDER</div>
+        <button
+          id="single-button"
+          type="button"
+          class="btn btn-primary"
+          uib-dropdown-toggle
+          ng-disabled="disabled"
+          ng-if="selected === null">
+            Filter by gender
+            <img src="../assets/imgs/chevron--down.svg" alt="">
+        </button>
+        <button
+          id="single-button"
+          type="button"
+          class="btn btn-primary"
+          uib-dropdown-toggle
+          ng-disabled="disabled"
+          ng-if="selected !== null">
+            {{ selected }}
+            <img src="../assets/imgs/chevron--down.svg" alt="">
+        </button>
+        <ul
+          class="dropdown-menu"
+          uib-dropdown-menu
+          role="menu"
+          aria-labelledby="single-button">
+          <li
+            role="menuitem"
+            ng-repeat="item in genders"
+            ng-click="$parent.selected = item">
+            {{ item }}
+          </li>
+       </ul>
+    </div>
+  </section>
+
+  <div class="clear-both"></div>
+
   <!-- Search Results Component -->
+  <section class="blank-results">
+    <div
+      ng-if="searchTerm === '' || searchTerm === undefined"
+      class="empty-search">
+      <img src="../assets/imgs/vader-icon.svg" alt="darth vader icon">
+      <p>Search by character name</p>
+    </div>
+    <ul class="results-list">
+      <search-results
+        ng-repeat="results in searchResults.results | filter:selected:strict"
+        results="results"
+        ng-if="searchTerm !== ''"></search-results>
+    </ul>
+  </section>
 </section>

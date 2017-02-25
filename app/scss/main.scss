@@ -1,4 +1,10 @@
+// bootstrap
+@import "./bootstrap/custom-bootstrap";
+
 // base
-@import './reset';
-@import './vars';
-@import './base';
+@import "./reset";
+@import "./vars";
+@import "./base";
+
+// view
+@import "../view/search";

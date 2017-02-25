@@ -2,8 +2,6 @@
 
 module.exports = function() {
   return function(characters, searchTerm) {
-    console.log('characters', characters);
-    console.log('searchTerm', searchTerm);
     let fuzzyRegex = genFuzzyRegex(searchTerm);
     return characters.filter(searchResults => {
       return fuzzyRegex.test(searchResults.gender.toLowerCase());

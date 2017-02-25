@@ -31,7 +31,7 @@
           class="btn btn-primary"
           uib-dropdown-toggle
           ng-disabled="disabled"
-          ng-if="selected === null">
+          ng-if="selected === null || searchTerm === ''">
             Filter by gender
             <img src="../assets/imgs/chevron--down.svg" alt="">
         </button>
@@ -56,6 +56,11 @@
             ng-click="$parent.selected = item">
             {{ item }}
           </li>
+          <li
+            role="menuitem"
+            ng-click="selected = null">
+            all genders
+          </li>
        </ul>
     </div>
   </section>
@@ -63,7 +68,7 @@
   <div class="clear-both"></div>
 
   <!-- Search Results Component -->
-  <section class="blank-results">
+  <!-- <section class="blank-results">
     <div
       ng-if="searchTerm === '' || searchTerm === undefined"
       class="empty-search">
@@ -76,5 +81,30 @@
         results="results"
         ng-if="searchTerm !== ''"></search-results>
     </ul>
+  </section> -->
+  <!-- <section class="blank-results">
+    <div
+      ng-if="searchTerm === '' || searchTerm === undefined"
+      class="empty-search">
+      <img src="../assets/imgs/vader-icon.svg" alt="darth vader icon">
+      <p>Search by character name</p>
+    </div>
+    <search-results
+      ng-repeat="results in searchResults.results | genderSearch:selected:true"
+      results="results"
+      ng-if="searchTerm !== ''"></search-results>
+  </section> -->
+
+  <section class="blank-results">
+    <div
+      ng-if="searchTerm === '' || searchTerm === undefined"
+      class="empty-search">
+      <img src="../assets/imgs/vader-icon.svg" alt="darth vader icon">
+      <p>Search by character name</p>
+    </div>
+    <search-results
+      results="searchResults.results"
+      ng-if="searchTerm !== ''"></search-results>
   </section>
+
 </section>

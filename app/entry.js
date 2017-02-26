@@ -7,11 +7,9 @@ const angular = require('angular');
 const camelcase = require('camelcase');
 const pascalcase = require('pascalcase');
 const uiRouter = require('angular-ui-router');
-const ngTouch = require('angular-touch');
-const ngAnimate = require('angular-animate');
 const uiBootstrap = require('angular-ui-bootstrap');
 
-const starwarsSearch = angular.module('starwarsSearch', [ngTouch, ngAnimate, uiRouter, uiBootstrap]);
+const starwarsSearch = angular.module('starwarsSearch', [uiRouter, uiBootstrap]);
 
 let context = require.context('./config/', true, /\.js$/);
 context.keys().forEach( path => {
